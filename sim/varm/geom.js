@@ -28,7 +28,7 @@ TODO:
 */
 
 var version = '019';
-var urlDir = 'http://visual6502.org/sim/varm/';
+var urlDir = '';
 
 //                    XYZ  UV
 var numPosPerVert   = 3;
