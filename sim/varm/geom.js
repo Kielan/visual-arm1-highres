@@ -210,8 +210,6 @@ var KF_Z  = 1 << 4;
 var KF_X  = 1 << 5;
 var KF_RR = 1 << 6;
 
-//-----------------------------------------------------------------------------
-
 window.onload = init;
 
 function init() {
@@ -443,7 +441,6 @@ function downloadMsg(inc) {
                  ' of ' + numDownloads + ' data files<br>');
 }
 
-//-----------------------------------------------------------------------------
 // Function object, used to hold downloaded binary data and keep track of
 // the status of the download.
 
@@ -505,14 +502,13 @@ function fileName(urlStr) {
     return urlStr.slice(urlStr.lastIndexOf('/') + 1)
 }
 
-//-----------------------------------------------------------------------------
-
 function loadBinaryData() {
 
     if (window.location.origin.toLowerCase().search('www.visual6502') >= 0) {
         urlDir = 'http://www.visual6502.org/sim/varm/';
+    } else {
+        urlDir = '/sim/'
     }
-    //replaceInner('msg2', 'urlDir = ' + urlDir);
 
     var layerFileNames = ['l0.bin', 'l1.bin', 'l2.bin', 'l3.bin',
                           'l4.bin', 'l5.bin', 'l6.bin', 'l7.bin'];
@@ -522,14 +518,14 @@ function loadBinaryData() {
         layerReqs[i] = new Uint16Request(urlStr);
     }
 
-    coordReqs.tdReq = new Uint16Request(urlDir + 'td.bin');
-    coordReqs.rlReq = new Uint16Request(urlDir + 'rl.bin');
-    coordReqs.rwReq = new Uint16Request(urlDir + 'rw.bin');
-    coordReqs.rhReq = new Uint16Request(urlDir + 'rh.bin');
-    coordReqs.rtReq = new Uint16Request(urlDir + 'rt.bin');
-    coordReqs.llReq = new Uint16Request(urlDir + 'll.bin');
-    coordReqs.ilReq = new Uint32Request(urlDir + 'il.bin');
-    coordReqs.neReq = new Uint32Request(urlDir + 'ne.bin');
+    coordReqs.tdReq = new Uint16Request('/sim/' + 'td.bin');
+    coordReqs.rlReq = new Uint16Request('/sim/' + 'rl.bin');
+    coordReqs.rwReq = new Uint16Request('/sim/' + 'rw.bin');
+    coordReqs.rhReq = new Uint16Request('/sim/' + 'rh.bin');
+    coordReqs.rtReq = new Uint16Request('/sim/' + 'rt.bin');
+    coordReqs.llReq = new Uint16Request('/sim/' + 'll.bin');
+    coordReqs.ilReq = new Uint32Request('/sim/' + 'il.bin');
+    coordReqs.neReq = new Uint32Request('/sim/' + 'ne.bin');
 
     coordReqArray = [coordReqs.tdReq, coordReqs.rlReq, coordReqs.rwReq,
                      coordReqs.rhReq, coordReqs.rtReq, coordReqs.llReq,
